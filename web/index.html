@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>27357</title>
+    <style>
+      .container-barcodes {
+        --spacing: 10px;
+        --column: 2;
+        --row: 4;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: calc(-1 * var(--spacing));
+        margin-bottom: calc(-1 * var(--spacing));
+        /* Set A4 200 PPI */
+        --width: 1654px;
+        --height: 2339px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .item-barcode {
+        border: 1px solid;
+        margin-left: var(--spacing);
+        margin-bottom: var(--spacing);
+        width: calc((var(--width) / var(--column)) - var(--spacing));
+        height: calc((var(--height) / var(--row)) - var(--spacing));
+        background-color: blue;
+        color: white;
+      }
+
+      .item-barcode:nth-child(8n + 1) {
+          margin-top: 80px;
+      }
+
+      .item-barcode:nth-child(8n + 2) {
+          margin-top: 80px;
+      }
+
+     
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a style="cursor: pointer" onclick="pages(0)">1</a>
+      </li>
+      <li>
+        <a style="cursor: pointer" onclick="pages(1)">2</a>
+      </li>
+      <li>
+        <a style="cursor: pointer" onclick="pages(2)">3</a>
+      </li>
+    </ul>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    $(document).ready(function () {
+      let container = $("body");
+    //   for (let i = 0; i < 1; i++) {
+        const index = 0 + 1;
+        const tempHtml = `<div class="is-a4" style= display:${
+          index === 1 ? "block" : "block"
+        }>
+                            <h1 style="text-align: center">This is page ${index}</h1>
+                            <div class="container-barcodes">
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                <div class="item-barcode">This barcode ${index}</div>
+                                 
+                                 
+                            </div>  
+                        </div>`;
+        container.append(tempHtml);
+    //   }
+    });
+
+    function pages(page) {
+        $('.is-a4').hide();
+        $(`.is-a4:eq(${page})`).show();
+    }
+  </script>
+</html>
