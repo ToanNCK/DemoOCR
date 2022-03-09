@@ -2664,10 +2664,7 @@
             bgOpacity: 0.3,
             multi: true,
             page: pageNumber,
-            minSize: [0, 0]
-          }, function(){
-            debugger
-            $(this).destroy();
+            minSize: [0, 0],
           });
         }
       }
@@ -2996,21 +2993,23 @@
 
       function webViewerScaleChanging(evt) {
         if (evt.scale) {
-          var ocrs = localStorage.getItem("ocr") ? JSON.parse(localStorage.getItem("ocr")) : [];
+          var ocrs = localStorage.getItem("ocr")
+            ? JSON.parse(localStorage.getItem("ocr"))
+            : [];
           // pdf default lấy từ server
-          let originPdf = {pageWidth : 816, pageHeight: 1056};
-          if(ocrs.length > 0){
-            let scale = evt.scale * originPdf.pageWidth / ocrs[0].pageWidth;
+          let originPdf = { pageWidth: 816, pageHeight: 1056 };
+          if (ocrs.length > 0) {
+            let scale = (evt.scale * originPdf.pageWidth) / ocrs[0].pageWidth;
             for (let i = 0; i < ocrs.length; i++) {
               const el = ocrs[i];
-              el.top =  el.top * scale;
-              el.left =  el.left * scale;
-              el.width =  el.width * scale;
-              el.height =  el.height * scale;
-              el.pageWidth =  el.pageWidth * scale;
-              el.pageHeight =  el.pageHeight * scale;
+              el.top = el.top * scale;
+              el.left = el.left * scale;
+              el.width = el.width * scale;
+              el.height = el.height * scale;
+              el.pageWidth = el.pageWidth * scale;
+              el.pageHeight = el.pageHeight * scale;
             }
-  
+
             localStorage.setItem("ocr", JSON.stringify(ocrs));
           }
         }
@@ -3029,7 +3028,6 @@
       function webViewerPageChanging({ pageNumber, pageLabel }) {
         PDFViewerApplication.toolbar.setPageNumber(pageNumber, pageLabel);
         PDFViewerApplication.secondaryToolbar.setPageNumber(pageNumber);
-
         if (PDFViewerApplication.pdfSidebar.isThumbnailViewVisible) {
           PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(
             pageNumber
@@ -8843,7 +8841,6 @@
           switch (view.renderingState) {
             case _ui_utils.RenderingStates.FINISHED:
               return false;
-
             case _ui_utils.RenderingStates.PAUSED:
               this.highestPriorityPage = view.renderingId;
               view.resume();
@@ -8859,13 +8856,27 @@
                 .draw()
                 .finally(() => {
                   this.renderHighestPriority();
+                  // var pageNumber = parseInt(this.highestPriorityPage.replace("page", ""));
+                  // setTimeout(function name() {
+                  //   if (pageNumber > 0) {
+                  //   let $page = $(`.page:eq(${pageNumber - 1})`);
+                  //   $page.attr("id", "page" + pageNumber);
+                  //   $page.off().Jcrop({
+                  //     bgColor: "black",
+                  //     bgOpacity: 0.3,
+                  //     multi: true,
+                  //     page: pageNumber,
+                  //     minSize: [0, 0],
+                  //   });
+                  // }
+                  // }, 500);
                 })
                 .catch((reason) => {
                   if (reason instanceof _pdfjsLib.RenderingCancelledException) {
                     return;
                   }
 
-                  console.log(`renderView: "${reason}"`);
+                  console.error(`renderView: "${reason}"`);
                 });
               break;
           }

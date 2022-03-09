@@ -146,7 +146,9 @@
     },
     prototype: {
       attach: function (core) {
-        this.init(core);
+        if(this.hasOwnProperty('init'))
+          this.init(core);
+        //this.init(core);
         core.ui.stage = this;
       },
       triggerEvent: function (ev) {
@@ -1281,7 +1283,6 @@
         m.container.on(t.eventName, function (e) {
           var nudge = e.shiftKey ? 16 : 2;
           if ($.inArray(e.keyCode, t.passthru) >= 0) return true;
-debugger
           switch (e.keyCode) {
             case 37:
               m.nudge(-nudge, 0);
