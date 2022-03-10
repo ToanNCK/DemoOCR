@@ -1,0 +1,38 @@
+[
+  {
+    "top": 99,
+    "left": 99.99999999999999,
+    "width": 615,
+    "height": 56.999999999999986,
+    "page": 1,
+    "pageWidth": 816,
+    "pageHeight": 1056
+  },
+  {
+    "top": 180,
+    "left": 91,
+    "width": 632,
+    "height": 56,
+    "page": 1,
+    "pageWidth": 816,
+    "pageHeight": 1056
+  },
+  {
+    "top": 87,
+    "left": 421,
+    "width": 258,
+    "height": 96,
+    "page": 2,
+    "pageWidth": 816,
+    "pageHeight": 1056
+  },
+  {
+    "top": 285,
+    "left": 66,
+    "width": 679,
+    "height": 55,
+    "page": 3,
+    "pageWidth": 816,
+    "pageHeight": 1056
+  }
+]

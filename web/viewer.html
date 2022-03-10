@@ -890,7 +890,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
   <script>
     (function ($) {
-      var checkIfexit = false;
       let url = "compressed.tracemonkey-pldi-09.pdf";
       let urlVn = "compressed.tracemonkey-pldi-09_vn.pdf";
       PDFViewerApplication.open(url);
@@ -910,6 +909,12 @@ See https://github.com/adobe-type-tools/cmap-resources
       var ocrs = localStorage.getItem("ocr")
         ? JSON.parse(localStorage.getItem("ocr"))
         : [];
+
+      $.getJSON("./_data/dataDemo.json", function (jd) {
+        
+      });
+
+      
       $(document).on("cropend", function () {
         var $that = $(".jcrop-current.jcrop-focus");
         !$that.attr("data-style") &&
